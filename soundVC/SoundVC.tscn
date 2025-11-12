@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cle1sirg3vqp0"]
+
+[ext_resource type="Script" uid="uid://opog1d7kwgcq" path="res://vcder/soundVC/sound_vc.gd" id="1_1o6is"]
+
+[node name="SoundVc" type="Node"]
+script = ExtResource("1_1o6is")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+max_polyphony = 9999
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+
+[connection signal="finished" from="BGM" to="." method="_on_bgm_finished"]
