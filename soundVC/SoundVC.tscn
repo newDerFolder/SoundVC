@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cle1sirg3vqp0"]
+[gd_scene load_steps=3 format=3 uid="uid://cle1sirg3vqp0"]
 
 [ext_resource type="Script" uid="uid://opog1d7kwgcq" path="res://vcder/soundVC/sound_vc.gd" id="1_1o6is"]
+[ext_resource type="Script" uid="uid://27dot88770vv" path="res://vcder/soundVC/SoundVcPlayer2D.gd" id="2_p5hu3"]
 
 [node name="SoundVc" type="Node"]
 script = ExtResource("1_1o6is")
@@ -9,5 +10,9 @@ script = ExtResource("1_1o6is")
 max_polyphony = 9999
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
+
+[node name="SoundPlayerVc2D" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("2_p5hu3")
+metadata/_custom_type_script = "uid://27dot88770vv"
 
 [connection signal="finished" from="BGM" to="." method="_on_bgm_finished"]

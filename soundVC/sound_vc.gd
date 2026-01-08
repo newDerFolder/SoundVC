@@ -1,4 +1,4 @@
-@icon("res://vcder/soundVC/SoundVC_bg.png")
+@icon("res://vcder/soundVC/sc/SoundVC_bg.png")
 extends Node
 
 #SoundVc0.1 | Godot4.5
@@ -9,6 +9,9 @@ var bgmList:Array
 var bgmLoopPlay:bool=true
 var playBgmFromList=false
 var bgmListPlayId=0
+
+func _init() -> void:
+	print("SoundVC ok!")
 
 func play(soundPath:String,from_position: float = 0.0):
 	$AudioStreamPlayer.stream=load(soundPath)
@@ -26,7 +29,12 @@ func startPlayBgmList():
 	playBgmFromList=true
 	bgmListPlayId=0
 	playBgm(get_bgmListPalyPath())
+func stopPalyBgmList():
+	playBgmFromList=false
+	stopBgm()
 
+func stopBgm():
+	$BGM.stop()
 func pausedBgm():
 	$BGM.stream_paused=true
 func unPausedBgm():
@@ -51,6 +59,7 @@ func get_bgmListPalyPath():
 	var playId = bgmListPlayId
 	bgmListPlayId = (bgmListPlayId + 1) % bgmList.size()
 	return bgmList[playId]["soundPath"]
+
 
 func _on_bgm_finished() -> void:
 	if bgmLoopPlay:
